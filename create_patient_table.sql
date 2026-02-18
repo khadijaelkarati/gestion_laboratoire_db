@@ -6,13 +6,14 @@ CREATE TABLE patient (
     date_nais date,
     genre varchar2(6) not null,
     phone varchar2(10) not null,
-    email varchar2(20),
+    email varchar2(100),
     adress varchar2(50) not null,
     medecin_traitant varchar2(50) not null,
     date_creation DATE not null,
     date_modification DATE not null,
     cree_par varchar2(50),
     modifie_par varchar2(50),
+    cin varchar2(20) unique,
     CONSTRAINT pk_patient PRIMARY KEY (id_patient),
     CONSTRAINT chk_patient_genre CHECK ( genre IN ('F','M')),
     CONSTRAINT chk_patient_email CHECK (email IS NULL OR email LIKE '%@%.%'),
@@ -29,8 +30,8 @@ CREATE SEQUENCE seq_patient
 -- ============== Script 3 : Insertion dans  PATIENT ==================
 -- Insertion de la table
 INSERT INTO  patient (
-    id_patient, nom, prenom, date_nais, genre, phone, email, adress,
-    medecin_traitant, date_creation, date_modification, cree_par, modifie_par
+    id_patient, nom, prenom, date_nais, genre, phone, email, adress,medecin_traitant, 
+    date_creation, date_modification, cree_par, modifie_par, cin
     )VALUES (
         seq_patient.NEXTVAL,
         'ELKARATI',
@@ -44,11 +45,12 @@ INSERT INTO  patient (
         SYSDATE,
         SYSDATE,
         'secretaire1',
-        null
+        null,
+        'BK125548'
     );
 INSERT INTO patient (
- id_patient, nom, prenom, date_nais, genre, phone, email, adress,
-    medecin_traitant, date_creation, date_modification, cree_par, modifie_par
+ id_patient, nom, prenom, date_nais, genre, phone, email, adress, medecin_traitant, 
+ date_creation, date_modification, cree_par, modifie_par, cin
     )VALUES (
         seq_patient.NEXTVAL,
         'Kchiri',
@@ -62,7 +64,8 @@ INSERT INTO patient (
         SYSDATE,
         SYSDATE,
         'secretaire1',
-        null
+        null,
+        'WA879542'
     );
     
     select * from patient;
