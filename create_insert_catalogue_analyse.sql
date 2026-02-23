@@ -60,3 +60,4 @@ INSERT INTO catalogue_analyse VALUES (seq_catalogue_analyse.NEXTVAL, 'Transamina
 
 -- afficher la table
 select * from catalogue_analyse;
+select * from patient;
