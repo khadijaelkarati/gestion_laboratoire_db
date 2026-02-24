@@ -22,3 +22,35 @@ CREATE TABLE analyse_souhaitee (
         status IN ('EN_ATTENTE', 'EN_COURS', 'TERMINEE', 'ANNULEE')
     )
 );
+select * from analyse_souhaitee;
+-- insertion 
+INSERT INTO analyse_souhaitee (
+    id_analyse_souhaitee,
+    id_patient,
+    id_catalogue,
+    date_demande,
+    status,
+    observations
+) VALUES (
+    seq_analyse_souhaitee.NEXTVAL,
+    1, 
+    1, 
+    SYSDATE,
+    'EN_ATTENTE',
+    'Patient à jeun depuis 8h'
+);
+INSERT INTO analyse_souhaitee (
+    id_analyse_souhaitee,
+    id_patient,
+    id_catalogue,
+    date_demande,
+    status,
+    observations
+) VALUES (
+    seq_analyse_souhaitee.NEXTVAL,
+    2, 
+    3, 
+    SYSDATE,
+    'EN_COURS',
+    'Urgent - Résultats attendus aujourd hui'
+);
