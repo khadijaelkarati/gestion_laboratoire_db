@@ -54,3 +54,13 @@ INSERT INTO analyse_souhaitee (
     'EN_COURS',
     'Urgent - Résultats attendus aujourd hui'
 );
+ALTER TABLE analyse_souhaitee ADD (
+    validation VARCHAR2(20) DEFAULT 'NON_VALIDEE',  
+    validee_par NUMBER,                         
+    date_validation DATE,                        
+    avis_biologiste VARCHAR2(500),               
+    CONSTRAINT chk_validation CHECK (validation IN ('VALIDEE', 'NON_VALIDEE')),
+    CONSTRAINT fk_analyse_validee_par 
+        FOREIGN KEY (validee_par) 
+        REFERENCES utilisateur(id_utilisateur)
+);
