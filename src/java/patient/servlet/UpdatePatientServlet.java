@@ -1,14 +1,14 @@
 package java.patient.servlet;
 import java.io.IOException;
 import java.patient.bean.Patient;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.patien.dao.PatientDAO;
+import java.patient.servlet.ListPatients;
+import java.patient.controller;
 @WebServlet("/UpdatePatientServlet")
 public class UpdatePatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,20 +19,22 @@ public class UpdatePatientServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {      String cin = request.getParameter("cin");
-    try {
-        // Récupérer le patient à modifier
-        Patient patient = PatientDAO.getPatientByCIN(cin);// getpatientbycin c'la recherche
-        if (patient != null) {
-            // Envoyer le patient à la JSP
-            request.setAttribute("patient", patient);
-            request.getRequestDispatcher("modifierPatient.jsp").forward(request, response);
-        } else {
-            response.sendRedirect("ListPatientsServlet?error=not_found");
-        }
-    } catch (Exception e) {
+   
+        
+    	 String cin = request.getParameter("cin");
+    	    
+    	    if (cin == null || cin.trim().isEmpty()) {
+    	        response.sendRedirect(ListPatients+"error=cin_required");
+    	        return;
+    	    }
+    	    try { 
+    	    // Rediriger vers LEUR servlet de recherche
+    	    response.sendRedirect("SearchPatientServlet?cin=" + cin);
+          }
+     catch (Exception e) {
         e.printStackTrace();
-        response.sendRedirect("ListPatientsServlet?error=not_found");
-    }
+        response.sendRedirect(ListPatients+"error=system_error");
+        }
 }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 try {
@@ -52,11 +54,12 @@ public class UpdatePatientServlet extends HttpServlet {
 	            String modifiePar = request.getParameter("modifie_par");
 	            //  Vérifier que les champs obligatoires sont présents
 	            if (cin == null || cin.isEmpty() || nom == null || nom.isEmpty()) {
-	                response.sendRedirect("ListPatientsServlet?error=missing_fields");
+	                response.sendRedirect(ListPatients+"error=missing_fields");
 	                return;
 	            }
 	            // Créer l'objet Patient
 	            Patient patient = new Patient();
+	            patient.setID_PATIENT(ID_PATIENT);
 	            patient.setCIN(cin);
 	            patient.setNOM(nom);
 	            patient.setPRENOM(prenom);
@@ -75,11 +78,11 @@ public class UpdatePatientServlet extends HttpServlet {
 	            PatientDAO.updatePatient(patient);
 	            
 	            // Rediriger vers la liste avec message de succès
-	            response.sendRedirect("ListPatientsServlet?success=updated");// liste
+	            response.sendRedirect(ListPatients + "?success=updated");// liste
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            response.sendRedirect("ListPatientsServlet?error=update_failed&cin=" + 
+	            response.sendRedirect(ListPatients + "?error=update_failed" + 
 	                                 request.getParameter("cin"));
 	        }
 	    }

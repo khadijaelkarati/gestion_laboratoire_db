@@ -1,6 +1,7 @@
 package java.patient.bean;
 
 public class Patient {
+private String ID_PATIENT;
 private String NOM;
 private String PRENOM;
 private String DATE_NAIS;
@@ -17,6 +18,12 @@ private String CIN;
 public Patient() {
 }
 //Getters & Setters
+public String getID_PATIENT() {
+	return ID_PATIENT;
+}
+public void setID_PATIENT(String ID_PATIENT) {
+	this.ID_PATIENT=ID_PATIENT;
+}
 	public String getNOM() {
 		return NOM;
 	}

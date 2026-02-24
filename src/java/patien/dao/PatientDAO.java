@@ -20,7 +20,7 @@ public class PatientDAO {
     public static void updatePatient(Patient p) throws Exception {
         Connection con = DBConnection.getConnection();
         PreparedStatement ps = con.prepareStatement(  "UPDATE patient SET NOM=?, PRENOM=?, DATE_NAIS=?, GENRE=?,PHONE=?,"
-        		+ "EMAIL=?,ADRESS=?, MEDECIN_TRAITANT=?, DATE_CREATION=?, DATE_MODIFICATION=?,CREE_PAR=?,MODIFIE_PAR=?,CIN=? WHERE id=?" );
+        		+ "EMAIL=?,ADRESS=?, MEDECIN_TRAITANT=?, DATE_CREATION=?, DATE_MODIFICATION=?,CREE_PAR=?,MODIFIE_PAR=?,CIN=? WHERE ID_PATIENT=?" );
         ps.setString(1, p.getNOM()); // 1er ? → NOM
         ps.setString(2, p.getPRENOM());// 2ème ? → PRENOM
         ps.setString(3, p.getDATE_NAIS());

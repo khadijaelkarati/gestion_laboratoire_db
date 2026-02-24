@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.patient.servlet.ListPatients;
 @WebServlet("/DeletePatientServlet")
 public class DeletePatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,11 +23,11 @@ public class DeletePatientServlet extends HttpServlet {
 	            PatientDAO.deletePatient(cin);
 	            
 	            // Rediriger vers la liste des patients avec message de succès
-	            response.sendRedirect("lien de servlet liste=deleted");
+	            response.sendRedirect(ListPatients+"deleted success");
 	            
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            response.sendRedirect("lien de servlet liste=delete_failed");
+	            response.sendRedirect(ListPatients+"error=delete_failed");
 	        }
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
