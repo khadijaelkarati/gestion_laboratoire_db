@@ -51,6 +51,7 @@ public class SearchAnalyseServlet extends HttpServlet {
                         analyse.setValidee_par(rs.getInt("validee_par"));
                         analyse.setDate_validation(rs.getDate("date_validation"));
                         analyse.setAvis_biologiste(rs.getString("avis_biologiste"));
+                        
                     }
                 }
             } catch (Exception e) {
@@ -60,8 +61,8 @@ public class SearchAnalyseServlet extends HttpServlet {
 
         
         request.setAttribute("analyse", analyse);
-       
-        request.getRequestDispatcher("page fatimaezzahra").forward(request, response);
+        // Redirection vers la page d'affichage
+        request.getRequestDispatcher("page fatimaezzahra ").forward(request, response);
     }
 
 }
