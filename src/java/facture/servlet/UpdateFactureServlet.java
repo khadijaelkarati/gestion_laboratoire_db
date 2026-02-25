@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,21 +34,25 @@ public class UpdateFactureServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            Facture facture = factureDAO.getFactureById(id);//recherche
-            
-            if (facture != null) {
+ 
+
+            try {
+
+                int id = Integer.parseInt(request.getParameter("id"));
+
+                Facture facture = factureDAO.getFactureById(id);
+
                 request.setAttribute("facture", facture);
-                request.getRequestDispatcher("/updateFacture.jsp").forward(request, response);
-            } else {
-                response.sendRedirect("listeFactures.jsp?error=notfound");
+
+                RequestDispatcher dispatcher =
+                        request.getRequestDispatcher("editFacture.jsp");
+
+                dispatcher.forward(request, response);
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendRedirect("listeFactures.jsp?error=sql");
-        }	}
+            }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -54,41 +60,33 @@ public class UpdateFactureServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		  
+
         try {
-            int idFacture = Integer.parseInt(request.getParameter("id"));
-            String numero = request.getParameter("numero");
-            int idPatient = Integer.parseInt(request.getParameter("idPatient"));
-            double montant = Double.parseDouble(request.getParameter("montant"));
-            String status = request.getParameter("status");
-            String mode = request.getParameter("mode");
+
+            int id = Integer.parseInt(request.getParameter("id_facture"));
+            String numero = request.getParameter("numero_facture");
+            int idPatient = Integer.parseInt(request.getParameter("id_patient"));
+
+
+            double montant = Double.parseDouble(request.getParameter("montant_total"));
+            String status = request.getParameter("status_paiement");
+            String mode = request.getParameter("mode_paiement");
             String observation = request.getParameter("observation");
-            String datePaiementStr = request.getParameter("datePaiement");
-            
-            Facture facture = factureDAO.getFactureById(idFacture);//recherche
-            
-            if (facture != null) {
-                facture.setNumero_facture(numero);
-                facture.setId_patient(idPatient);
-                facture.setMontant_total(montant);
-                facture.setStatus_paiement(status);
-                facture.setMode_paiement(mode);
-                facture.setObservation(observation);
-                
-                if (datePaiementStr != null && !datePaiementStr.isEmpty()) {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    Date datePaiement = sdf.parse(datePaiementStr);
-                    facture.setDate_paiement(datePaiement);
-                }
-                
-                factureDAO.updateFacture(facture);
-                response.sendRedirect("listeFactures.jsp?success=update");
-            } else {
-                response.sendRedirect("listeFactures.jsp?error=notfound");
-            }
-            
+
+            Facture facture = new Facture();
+            facture.setId_facture(id);
+            facture.setNumero_facture(numero);
+            facture.setId_patient(idPatient);
+            facture.setMontant_total(montant);
+            facture.setStatus_paiement(status);
+            facture.setMode_paiement(mode);
+            facture.setObservation(observation);
+
+            factureDAO.updateFacture(facture);
+
+            response.sendRedirect("listFacture");
+
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect("listeFactures.jsp?error=sql");
         }
-    }	}
-
+	}}

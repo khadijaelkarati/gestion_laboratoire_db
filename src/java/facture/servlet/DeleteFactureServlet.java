@@ -30,19 +30,20 @@ public class DeleteFactureServlet extends HttpServlet {
 		  String action = request.getParameter("action");
 	        
 	        try {
-	            if ("deleteOne".equals(action)) {
-	                int idFacture = Integer.parseInt(request.getParameter("id"));
-	                factureDAO.deleteFacture(idFacture);
-	                response.sendRedirect("listeFactures.jsp?success=delete");
-	                
-	            } else if ("deleteByPatient".equals(action)) {
-	                int idPatient = Integer.parseInt(request.getParameter("patientId"));
-	                factureDAO.deleteFacturesByPatient(idPatient);
-	                response.sendRedirect("listeFactures.jsp?success=deletepatient");
-	                
-	            } else if ("deleteAnnulees".equals(action)) {
+	            if ("deleteANNULEE".equals(action)) {
 	                factureDAO.deleteFacturesAnnulees();
 	                response.sendRedirect("listeFactures.jsp?success=deleteannulees");
+	                
+	            } else if ("deleteByPatient".equals(action)) {
+	                int CIN = Integer.parseInt(request.getParameter("patientId"));
+	                factureDAO.deleteFacturesByPatient(CIN);
+	                response.sendRedirect("listeFactures.jsp?success=deletepatient");
+	                
+	            } else if ("deleteFacture".equals(action)) {
+	                
+	                int numero_facture = Integer.parseInt(request.getParameter("numero_facture"));
+                    factureDAO.deleteFacture(numero_facture);
+	                response.sendRedirect("listeFactures.jsp?success=deleteFacture");
 	            }
 	            
 	        } catch (SQLException e) {
@@ -56,11 +57,11 @@ public class DeleteFactureServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-            int idFacture = Integer.parseInt(request.getParameter("id"));
+            int numero_facture= Integer.parseInt(request.getParameter("numero_facture"));
             String confirm = request.getParameter("confirm");
             
             if ("yes".equals(confirm)) {
-                factureDAO.deleteFacture(idFacture);
+                factureDAO.deleteFacture(numero_facture);
                 response.sendRedirect("listeFactures.jsp?success=delete");
             } else {
                 response.sendRedirect("listeFactures.jsp");
