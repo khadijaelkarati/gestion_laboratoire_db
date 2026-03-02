@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= request.getAttribute("pageTitle") != null ? request.getAttribute("pageTitle") : "LaboPlatform" %></title>
+
+  <link rel="stylesheet" href="<%= request.getContextPath() %>style.css?v=999">
+  <script defer src="<%= request.getContextPath() %>/assets/js/app.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="topbar">
+    <div class="brand">Labo<span>Platform</span></div>
+    <div class="nav">
+      <a href="<%= request.getContextPath() %>/">Accueil</a>
+    </div>
+  </div>

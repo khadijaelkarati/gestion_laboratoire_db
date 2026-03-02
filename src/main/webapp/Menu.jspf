@@ -1,0 +1,9 @@
+<div class="card">
+  <div class="nav">
+    <a href="<%= request.getContextPath() %>/home?view=home">Dashboard</a>
+    <a href="<%= request.getContextPath() %>/home?view=patients_list">Patients</a>
+    <a href="<%= request.getContextPath() %>/home?view=analyses_list">Analyses</a>
+    <a href="<%= request.getContextPath() %>/home?view=results_list">Résultats</a>
+    <a href="<%= request.getContextPath() %>/home?view=payments_receipt">Paiement</a>
+  </div>
+</div>

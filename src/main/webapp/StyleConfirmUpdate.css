@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+/* ===== STYLES GÉNÉRAUX ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    background: #f5f7fa;  /* Gris très clair comme dans l'image */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* ===== MODALE DE CONFIRMATION ===== */
+.confirm-modal {
+    width: 450px;
+    max-width: 90%;
+    background: white;
+    border-radius: 16px;  /* Coins arrondis comme dans l'image */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);  /* Ombre très légère */
+    overflow: hidden;
+    animation: modalAppear 0.3s ease-out;
+    border: 1px solid #e5e7eb;  /* Bordure grise très légère */
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* ===== EN-TÊTE ===== */
+.confirm-header {
+    padding: 24px 24px 8px 24px;
+    text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.confirm-header h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #333333;  /* Gris foncé */
+    margin-bottom: 4px;
+}
+
+.confirm-header h2 i {
+    font-size: 22px;
+    color: #2563eb;  /* Bleu pour l'icône (comme le menu) */
+    background: #f0f7ff;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+/* ===== CORPS ===== */
+.confirm-body {
+    padding: 16px 24px 20px 24px;
+    text-align: center;
+}
+
+.confirm-icon {
+    font-size: 48px;
+    color: #2563eb;
+    margin-bottom: 12px;
+    background: #f0f7ff;
+    width: 72px;
+    height: 72px;
+    line-height: 72px;
+    border-radius: 50%;
+    margin: 0 auto 12px auto;
+    text-align: center;
+}
+
+.confirm-icon i {
+    font-size: 36px;
+}
+
+.confirm-body h3 {
+    color: #333333;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.confirm-patient-info {
+    background: #f9fafb;  /* Gris très léger */
+    padding: 16px;
+    border-radius: 12px;
+    margin: 16px 0;
+    border: 1px solid #f0f0f0;
+}
+
+.confirm-patient-name {
+    color: #111827;
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.confirm-patient-cin {
+    color: #4b5563;
+    font-size: 14px;
+    background: white;
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.confirm-patient-cin i {
+    color: #2563eb;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.confirm-message {
+    background: #f9fafb;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 16px 0 4px 0;
+    border: 1px dashed #d1d5db;
+}
+
+.confirm-message p {
+    color: #4b5563;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.confirm-message i {
+    color: #2563eb;
+    font-size: 14px;
+}
+
+/* ===== PIED ===== */
+.confirm-footer {
+    padding: 8px 24px 24px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===== BOUTON OK ===== */
+.btn-confirm {
+    padding: 10px 36px;
+    border-radius: 8px;  /* Coins légèrement arrondis comme dans l'image */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-decoration: none;
+    background: #2563eb;  /* Bleu comme dans le menu */
+    color: white;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.btn-confirm:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+.btn-confirm:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+}
+
+.btn-confirm i {
+    font-size: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
+    .confirm-modal {
+        width: 95%;
+    }
+    
+    .confirm-header, .confirm-body, .confirm-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    
+    .btn-confirm {
+        width: 100%;
+    }
+}

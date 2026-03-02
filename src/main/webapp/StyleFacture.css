@@ -1,0 +1,43 @@
+body{
+    font-family: 'Segoe UI';
+    background:#f4f7fa;
+}
+
+.content{
+    padding:30px;
+}
+
+h2{
+    color:#2c3e50;
+}
+
+.btn-add{
+    background:#2ecc71;
+    padding:8px 15px;
+    border-radius:8px;
+    color:white;
+    text-decoration:none;
+}
+
+.styled-table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    margin-top:20px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+.styled-table th,
+.styled-table td{
+    padding:12px;
+}
+
+.styled-table thead{
+    background:#e9f2f7;
+}
+
+.styled-table tr:hover{
+    background:#f1f9ff;
+}

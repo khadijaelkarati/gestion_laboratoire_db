@@ -1,0 +1,195 @@
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .confirm-modal {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .confirm-header {
+            margin-bottom: 20px;
+        }
+        
+        .confirm-header h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #1e293b;
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .confirm-header h2 i {
+            color: #94a3b8;
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+        
+        .confirm-body {
+            padding: 10px 0;
+        }
+        
+        .confirm-icon {
+            width: 80px;
+            height: 80px;
+            background: #fee2e2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+        
+        .confirm-icon i {
+            color: #ef4444;
+            font-size: 40px;
+        }
+        
+        .confirm-body h3 {
+            color: #1e293b;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .confirm-patient-info {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        
+        .confirm-patient-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        
+        .confirm-patient-item:last-child {
+            border-bottom: none;
+        }
+        
+        .confirm-patient-item i {
+            width: 30px;
+            color: #94a3b8;
+            font-size: 16px;
+        }
+        
+        .confirm-patient-item strong {
+            width: 100px;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .confirm-patient-item span {
+            flex: 1;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        
+        .confirm-patient-name {
+            font-size: 16px;
+            color: #1e293b;
+            font-weight: 600;
+        }
+        
+        .confirm-message {
+            background: #fef2f2;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0 10px;
+            border: 1px dashed #fecaca;
+        }
+        
+        .confirm-message p {
+            color: #b91c1c;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0;
+        }
+        
+        .confirm-message i {
+            color: #ef4444;
+        }
+        
+        .confirm-footer {
+            margin-top: 25px;
+        }
+        
+        .btn-confirm {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            padding: 12px 45px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+        
+        .btn-confirm:hover {
+            background: #e2e8f0;
+            border-color: #cbd5e1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            color: #1e293b;
+        }
+        
+        .btn-confirm i {
+            color: #64748b;
+            font-size: 16px;
+        }
+        
+        .btn-confirm:hover i {
+            color: #1e293b;
+        }
+        
+        /* Petite touche de rouge pour la suppression */
+        .delete-highlight {
+            color: #ef4444;
+            font-weight: 600;
+        }

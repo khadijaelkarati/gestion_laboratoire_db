@@ -1,0 +1,344 @@
+/* ===== STYLES GÉNÉRAUX ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    background: rgba(139, 92, 246, 0.15);  /* Violet très clair */
+    backdrop-filter: blur(8px);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* ===== MODALE PRINCIPALE ===== */
+.modal {
+    width: 900px;
+    max-width: 100%;
+    max-height: 90vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    box-shadow: 0 30px 60px -15px rgba(139, 92, 246, 0.3),
+                0 0 0 1px rgba(139, 92, 246, 0.1) inset;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalAppear 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===== EN-TÊTE DE LA MODALE ===== */
+.modal-header {
+    padding: 30px 35px 20px 35px;
+    background: transparent;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.modal-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 26px;
+    font-weight: 500;
+    color: #2d1b4e;  /* Violet profond pour le texte */
+    letter-spacing: -0.3px;
+}
+
+.modal-header h2 i {
+    font-size: 32px;
+    color: #8b5cf6;  /* Violet clair */
+    background: rgba(139, 92, 246, 0.1);
+    padding: 12px;
+    border-radius: 24px;
+}
+
+/* ===== CORPS DE LA MODALE ===== */
+.modal-body {
+    padding: 10px 35px 20px 35px;
+    overflow-y: auto;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: #c4b5fd #ede9fe;
+}
+
+/* Scrollbar personnalisée violette */
+.modal-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #ede9fe;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #c4b5fd;
+    border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #a78bfa;
+}
+
+/* ===== FORMULAIRE ===== */
+.patient-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    flex: 1 1 calc(50% - 12.5px);
+    min-width: 250px;
+}
+
+.form-group.full-width {
+    flex: 0 0 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #6d4a9e;  /* Violet moyen */
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid #e9ddfe;  /* Bordure violet très clair */
+    border-radius: 20px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background: #faf8ff;  /* Fond légèrement violet */
+    color: #2d1b4e;
+    font-family: inherit;
+}
+
+.form-control:focus {
+    border-color: #8b5cf6;
+    outline: none;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.form-control[readonly] {
+    background: #f2ecfe;
+    border-color: #d8c9fd;
+    color: #5b3b8c;
+    cursor: default;
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.6;
+}
+
+/* ===== PIED DE LA MODALE ===== */
+.modal-footer {
+    padding: 15px 35px 30px 35px;
+    background: transparent;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+/* ===== BOUTONS CHIC ET DISCRETS ===== */
+.btn {
+    padding: 12px 28px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn i {
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+/* Bouton OK - Violet clair minimaliste */
+.btn-success {
+    background: rgba(139, 92, 246, 0.08);
+    color: #6d4a9e;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.btn-success:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-success:hover i {
+    transform: scale(1.1);
+}
+
+/* Bouton Modifier - Violet doux */
+.btn-primary {
+    background: rgba(139, 92, 246, 0.08);
+    color: #6d4a9e;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    backdrop-filter: blur(4px);
+}
+
+.btn-primary:hover {
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-primary:hover i {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* Bouton Supprimer - Rouge très doux */
+.btn-danger {
+    background: rgba(239, 68, 68, 0.05);
+    color: #b91c1c;
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    backdrop-filter: blur(4px);
+}
+
+.btn-danger:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-danger:hover i {
+    transform: scale(1.1) translateY(-1px);
+}
+
+/* Bouton Annuler (si besoin) */
+.btn-secondary {
+    background: rgba(100, 116, 139, 0.05);
+    color: #475569;
+    border: 1px solid rgba(100, 116, 139, 0.15);
+}
+
+.btn-secondary:hover {
+    background: rgba(100, 116, 139, 0.1);
+    border-color: rgba(100, 116, 139, 0.25);
+}
+
+/* Effet de pression */
+.btn:active {
+    transform: translateY(1px);
+    transition: all 0.1s;
+}
+
+/* ===== MESSAGE DE CONFIRMATION ===== */
+.confirm-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(139, 92, 246, 0.15);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.confirm-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 40px;
+    width: 420px;
+    max-width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 50px -20px rgba(139, 92, 246, 0.4);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.confirm-box i {
+    font-size: 48px;
+    color: #ef4444;
+    margin-bottom: 20px;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 16px;
+    border-radius: 50%;
+}
+
+.confirm-box h3 {
+    margin-bottom: 8px;
+    color: #2d1b4e;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.confirm-box p {
+    color: #6d4a9e;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.confirm-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .modal-header, .modal-body, .modal-footer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .form-row {
+        gap: 15px;
+    }
+    
+    .btn {
+        flex: 1;
+        min-width: 100px;
+    }
+}
